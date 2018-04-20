@@ -1,0 +1,24 @@
+{
+  "name": "hugues",
+  "version": "1.0.0",
+  "description": "Hugues is a skeleton theme for Hugo using Gulp and Sass.",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huguestennier/hugues.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huguestennier/hugues/issues"
+  },
+  "homepage": "https://github.com/huguestennier/hugues#readme"
+}
