@@ -25,7 +25,7 @@ function js() {
 };
 
 function css() {
-  gulp.src("./assets/scss/**/*.scss")
+  gulp.src("./assets/scss/theme.scss")
     .pipe(sourcemaps.init())
     .pipe(sass().on("error", sass.logError))
     .pipe(sourcemaps.write())
