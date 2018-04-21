@@ -29,7 +29,7 @@ function css() {
   gulp.src("./assets/scss/theme.scss")
     .pipe(sourcemaps.init())
     .pipe(sass().on("error", sass.logError))
-    .pipe(autoprefixer())
+    .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
     .pipe(sourcemaps.write())
     .pipe(production ? cleanCSS() : util.noop())
     .pipe(gulp.dest("./static/css"));
