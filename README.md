@@ -1,13 +1,13 @@
 # hugues
 
-Hugues is a skeleton theme for Hugo using Gulp and Sass.
-
-The main purpose of this theme is to have the basic toolings to get started on simple static sites that don't require too much.
-
-No Webpack. No Babel. No Parcel. Light &amp; easy to use.
+Hugues is a skeleton theme for [Hugo](https://gohugo.io/) using [Gulp](https://gulpjs.com/), [Sass](https://sass-lang.com/) and [Rollup](https://rollupjs.org/guide/en).
 
 ## How to use
 
-* `npm install` to install the couple of dependencies needed
-* `npm run dev` when you are developing to handle `.scss` files
-* `npm run build` to minify your assets
+* Install [Hugo](https://gohugo.io/getting-started/quick-start/)
+* In your Hugo `config.yoml` file, add `theme = "hugues"`
+* Clone this repository and place it under `/themes`
+* `npm install` to install the dependencies needed
+* `gulp` when you are developing
+* `gulp build` to minify your assets
+* Use the assets folder for `.scss` or `.js` files - every other static assets should go directly into the `static` folder.
