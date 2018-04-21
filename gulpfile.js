@@ -1,30 +1,52 @@
 "use strict";
 
-var gulp = require("gulp");
-var sass = require("gulp-sass");
-var babel = require("gulp-babel");
+const gulp = require("gulp");
+const sass = require("gulp-sass");
+const cleanCSS = require('gulp-clean-css');
+const babel = require("gulp-babel");
+const rollup = require('gulp-better-rollup');
+const uglify = require('gulp-uglify-es').default;
+const util = require('gulp-util');
+const sourcemaps = require('gulp-sourcemaps');
 
-gulp.task("scss", function() {
-  return gulp
-    .src("./assets/css/**/*.scss")
+var production = false;
+
+function js() {
+  gulp.src('./assets/js/app.js')
+    .pipe(sourcemaps.init())
+    .pipe(rollup({
+      plugins: [babel()]
+    }, {
+      format: 'cjs',
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(production ? uglify() : util.noop())
+    .pipe(gulp.dest('./static/js'))
+};
+
+function css() {
+  gulp.src("./assets/scss/**/*.scss")
+    .pipe(sourcemaps.init())
     .pipe(sass().on("error", sass.logError))
+    .pipe(sourcemaps.write())
+    .pipe(production ? cleanCSS() : util.noop())
     .pipe(gulp.dest("./static/css"));
-});
+};
 
-gulp.task("babel", function() {
-  return gulp
-    .src("./assets/js/app.js")
-    .pipe(
-      babel({
-        presets: ["env"]
-      })
-    )
-    .pipe(gulp.dest("./static/js"));
-});
+function watch() {
+  gulp.watch("./assets/scss/**/*.scss", ["css"]);
+  gulp.watch("./assets/js/**/*.js", ["js"]);
+};
 
-gulp.task("watch", function() {
-  gulp.watch("./assets/css/**/*.scss", ["scss"]);
-  gulp.watch("./assets/js/app.js", ["babel"]);
-});
+function build() {
+  production = true;
+  js();
+  css();
+};
+
+exports.js = js;
+exports.css = css;
+exports.watch = watch;
+exports.build = build;
 
 gulp.task("default", ["watch"]);
