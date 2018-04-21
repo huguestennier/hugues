@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Hugues is a skeleton theme for Hugo using Gulp, Sass & Rollup.",
   "dependencies": {
+    "gulp-autoprefixer": "^5.0.0",
     "gulp-better-rollup": "^3.1.0",
     "gulp-clean-css": "^3.9.3",
     "gulp-sourcemaps": "^2.6.4",

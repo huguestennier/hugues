@@ -2,6 +2,7 @@
 
 const gulp = require("gulp");
 const sass = require("gulp-sass");
+const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const babel = require("gulp-babel");
 const rollup = require('gulp-better-rollup');
@@ -28,6 +29,7 @@ function css() {
   gulp.src("./assets/scss/theme.scss")
     .pipe(sourcemaps.init())
     .pipe(sass().on("error", sass.logError))
+    .pipe(autoprefixer())
     .pipe(sourcemaps.write())
     .pipe(production ? cleanCSS() : util.noop())
     .pipe(gulp.dest("./static/css"));
